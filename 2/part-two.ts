@@ -4,21 +4,16 @@ const lines = file.split(/\r?\n/);
 let total = 0;
 
 for (const line of lines) {
-  const splitLine = line.split(":");
-  const game = splitLine.at(0);
-  const bag = splitLine.at(1);
-
+  const bag = line.split(":").at(1);
   if (bag) {
-    const contents = bag.split(";").map((v) => v.trim());
-
-    console.log(contents);
+    const contents = bag.split(";");
 
     let maxRed = 0;
     let maxGreen = 0;
     let maxBlue = 0;
 
     for (const hand of contents) {
-      const cubes = hand.split(",").map((v) => v.trim());
+      const cubes = hand.split(",");
 
       for (const cubeCount of cubes) {
         const count = Number(cubeCount.match(/\d+/g)?.at(0) ?? "0");
